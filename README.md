@@ -12,6 +12,11 @@ engine — fused over one live event log, where **every number is clickable vide
 | --- | --- | --- |
 | 10Hz canvas sampler, motion frame-diff + on-device blob tracker (person/vehicle/package), hysteresis state machine | Tokenizer → recursive-descent parser → evaluator with cell refs, `IF`, autocomplete | The **event log**: segments the CV engine emits are the rows the formulas aggregate — and the proof links point back into video time |
 
+## Demo video
+
+[framesheet-demo.mp4](framesheet-demo.mp4) — walkthrough of Click-to-Proof,
+zone sliders, and the summary sheet on the card-terminal clip.
+
 ## Run it
 
 ```bash
