@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "name": "property-tests-on-engine-save",
+  "description": "Whenever the segmenter, formula engine, or detector changes, run the fast-check property suites and report any shrunk counterexamples before continuing.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "src/engine/segmenter.ts",
+      "src/engine/formulas.ts",
+      "src/engine/detector.ts",
+      "src/engine/runner.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Run `npx vitest run` for the FrameSheet engine property tests. If any fast-check property fails, treat the shrunk counterexample as authoritative: identify which invariant in .kiro/specs/framesheet-engine/requirements.md (Acceptance Invariants) is violated, fix the engine (never weaken the property to pass), and re-run until green."
+  }
+}

@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-obsidian: #0b0f17;
+  --color-panel: #0e1420;
+  --color-panel2: #0b111c;
+  --color-line: rgb(148 163 184 / 0.14);
+  --color-ink: #e6edf3;
+  --color-dim: #7d8aa0;
+  --color-phosphor: #10b981;
+  --color-amberx: #f59e0b;
+  --color-crimson: #ef4444;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-display);
+  background: #0b0f17;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(16, 185, 129, 0.35);
+  color: #ecfdf5;
+}
+
+/* --------------------------------- panels --------------------------------- */
+
+.panel {
+  position: relative;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(20, 27, 40, 0.55), rgba(11, 15, 23, 0.85));
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.45);
+}
+
+/* industrial HUD corner brackets */
+.hud-corners::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  border-radius: 10px;
+  background:
+    linear-gradient(rgb(52 211 153 / 0.5), rgb(52 211 153 / 0.5)) top left / 16px 1.5px,
+    linear-gradient(rgb(52 211 153 / 0.5), rgb(52 211 153 / 0.5)) top left / 1.5px 16px,
+    linear-gradient(rgb(52 211 153 / 0.5), rgb(52 211 153 / 0.5)) top right / 16px 1.5px,
+    linear-gradient(rgb(52 211 153 / 0.5), rgb(52 211 153 / 0.5)) top right / 1.5px 16px,
+    linear-gradient(rgb(52 211 153 / 0.5), rgb(52 211 153 / 0.5)) bottom left / 16px 1.5px,
+    linear-gradient(rgb(52 211 153 / 0.5), rgb(52 211 153 / 0.5)) bottom left / 1.5px 16px,
+    linear-gradient(rgb(52 211 153 / 0.5), rgb(52 211 153 / 0.5)) bottom right / 16px 1.5px,
+    linear-gradient(rgb(52 211 153 / 0.5), rgb(52 211 153 / 0.5)) bottom right / 1.5px 16px;
+  background-repeat: no-repeat;
+  opacity: 0.55;
+}
+
+/* --------------------------------- video fx -------------------------------- */
+
+.scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.022) 0 1px,
+    transparent 1px 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+.vignette {
+  background: radial-gradient(120% 105% at 50% 42%, transparent 58%, rgba(2, 6, 12, 0.5));
+}
+
+.zone-proof {
+  animation: proofFlash 0.9s ease-in-out infinite;
+}
+
+.zone-proof-banner {
+  animation: bannerPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes proofFlash {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1.5px rgba(52, 211, 153, 0.9), 0 0 26px rgba(16, 185, 129, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.95), 0 0 48px rgba(16, 185, 129, 0.75);
+  }
+}
+
+@keyframes bannerPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 18px rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 34px rgba(16, 185, 129, 0.6);
+  }
+}
+
+/* --------------------------------- sheet bg --------------------------------- */
+
+.blueprint {
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.045) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* ------------------------------- scrollbars -------------------------------- */
+
+.scroll-slim {
+  scrollbar-width: thin;
+  scrollbar-color: #223048 transparent;
+}
+.scroll-slim::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-slim::-webkit-scrollbar-thumb {
+  background: #223048;
+  border-radius: 8px;
+}
+.scroll-slim::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* --------------------------------- sliders ---------------------------------- */
+
+.slider {
+  outline: none;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 11px;
+  height: 11px;
+  border-radius: 9999px;
+  background: #e6edf3;
+  border: 2px solid #0b0f17;
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.6), 0 0 8px rgba(52, 211, 153, 0.35);
+  cursor: pointer;
+}
+.slider::-moz-range-thumb {
+  width: 11px;
+  height: 11px;
+  border-radius: 9999px;
+  background: #e6edf3;
+  border: 2px solid #0b0f17;
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.6);
+  cursor: pointer;
+}
+
+/* --------------------------------- toasts ----------------------------------- */
+
+.toast-in {
+  animation: toastIn 0.28s cubic-bezier(0.21, 1.02, 0.52, 1.01);
+}
+
+@keyframes toastIn {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
